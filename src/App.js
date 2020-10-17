@@ -1,24 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+
+import Movie from "./components/Movie";
+
+import Header from "./components/Header";
+
+const FEATURED_API =
+  "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=5d668a4e55e28292714d6fdd2fd67935&page=1";
+
+const SEARCH_API =
+  "https://api.themoviedb.org/3/search/movie?&api_key=5d668a4e55e28292714d6fdd2fd67935&query=";
 
 function App() {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    fetch(FEATURED_API)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setMovies(data.results);
+      });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <div className="tiles">
+      <div className="movie-container">
+        {movies.length > 0 &&
+          movies.map((movie) => <Movie key={movie.id} {...movie} />)}
+      </div>
+      </div>
+      
     </div>
   );
 }
