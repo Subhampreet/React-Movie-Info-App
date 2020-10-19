@@ -123,13 +123,44 @@ body{
   height: 25px;
   padding-left: 30px;
   padding-top: 3px;
-  border: 1px solid #fff;
+  border: 1.5px solid #fff;
   border-radius: 20px;
+}
+
+.header input:focus{
+  outline: 0;
+  color: black;
 }
 
 .header input::placeholder{
   font-size: 17px;
   letter-spacing: 0.05rem;
-  color: #2b2728;
+  color: black;
+}
+
+
+.tag{
+  background-color: #2b2728;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.tag.green{
+  color: green;
+  /* background-color: rgb(44, 167, 27) ; */
+}
+
+.tag.orange{
+  color: rgb(248, 167, 16);
+  /* background-color: rgb(248, 167, 16) ; */
+}
+
+.tag.red{
+  color: rgb(206, 8, 8);
+  /* background-color: rgb(206, 8, 8); */
 }
 
